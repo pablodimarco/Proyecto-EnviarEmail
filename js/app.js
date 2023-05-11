@@ -30,10 +30,17 @@ document.addEventListener('DOMContentLoaded', function() {
         if(e.target.value.trim() === ''){
             // de esta forma haces mas dinamico el text
             mostrarAlerta(`El campo ${e.target.id} es obligatorio`, e.target.parentElement);
-        } else ;
+            return; // este return detiene la ejecucion del codigo
+        } 
+
+        // esta funcion limpia la alerta cuando se completan los campos
+        limpiarAlerta(e.target.parentElement)
     }
 
     function mostrarAlerta(mensaje, referencia) {
+
+        limpiarAlerta(referencia);
+
         // comprueba si ya existe una alerta
         const alerta = referencia.querySelector('.bg-red-600');
         if(alerta) {
@@ -53,6 +60,13 @@ document.addEventListener('DOMContentLoaded', function() {
         // agregando como parametro la referencia lo agrega al final de cada input al mensaje
         referencia.appendChild(error);
 
+    }
+
+    function limpiarAlerta(referencia){
+        const alerta = referencia.querySelector('.bg-red-600');
+        if(alerta){
+            alerta.remove();
+        }
     }
 
 });
