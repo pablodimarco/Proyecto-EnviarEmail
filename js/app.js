@@ -21,7 +21,8 @@ document.addEventListener('DOMContentLoaded', function() {
     inputAsunto.addEventListener('input', validar);
     inputMensaje.addEventListener('input', validar);
 
-    // creando contenido extra
+    // creando contenido extra no obligatorio
+    // verificando email
     cc.addEventListener('input', function(e) {
         e.preventDefault();
         if(e.target.value.trim() !== ''){
